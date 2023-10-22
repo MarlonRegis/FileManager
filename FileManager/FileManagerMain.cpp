@@ -65,16 +65,19 @@ int main()
 {
 	string _fileName;
 	cout << "---File Manager Linguage---" << std::endl;
-	cout << "Enter the file name with path: " << std::endl;
+	cout << "Enter the file name with path ('Please put the whole way to the file, example: c:\\filemanager\\arquivo.txt'): " << std::endl;
 	getline(std::cin, _fileName);
 
 	try
 	{
-		
 		const std::filesystem::path path =  _fileName;
 		bool ret = fs::exists(path);
 		if (ret) {
 			TryToOpenFile(path);
+		}
+		else
+		{
+			cout << "This file is not exist!" << std::endl;
 		}
 	}
 	catch (std::filesystem::filesystem_error const& ex)
